@@ -21,19 +21,21 @@ request["Authorization"] = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MDY5ZjhlMmVk
 
 response = http.request(request)
 results = JSON.parse(response.read_body)["results"]
+puts results
 
-
-puts "Cleaning database"
+puts "Cleaning database..."
 Movie.destroy_all
-15.times do |number|
+18.times do |number|
   overview = results[number]["overview"]
   title = results[number]["original_title"]
-  poster_url= results[number]["poster_path"]
-  puts "Generating a new movie entry"
+  poster_url = results[number]["poster_path"]
+  # vote_average = results[number]["vote_average"]
+
+  puts "Generating a new movie entry..."
   movie = Movie.new(
   title: title,
   overview: overview,
-  poster_url: poster_url)
+  poster_url: "https://image.tmdb.org/t/p/w1280#{poster_url}")
   movie.save!
-  puts "#{movie.title} was added"
+  puts "a new entry for the movie: #{movie.title} was added!"
 end

@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
+  get "watchlists", to: "watchlist#index"
+  get "watchlists/all", to: "watchlist#all", as: :all
+
   # root "posts#index"
 end
