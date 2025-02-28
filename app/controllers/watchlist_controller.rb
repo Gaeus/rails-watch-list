@@ -16,6 +16,13 @@ class WatchlistController < ApplicationController
     @movies = Movie.all
   end
 
+  def add_movie_to_list
+    @list = List.find(params[:list_id])
+    @movie = Movie.find(params[:movie_id])
+    addedmovie = Addedmovie.new(list: @list, movie: @movie)
+    addedmovie.save
+  end
+
   def show
     @movie = Movie.find(params[:id])
   end

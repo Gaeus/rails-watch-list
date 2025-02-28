@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get "watchlists/:id", to: "watchlist#show", as: :movie
   get "watchlists/lists/edit", to: "watchlist#edit", as: :edit
   get "watchlists/lists/edit/:id", to: "watchlist#list", as: :list
-  get "watchlists/lists/edit/:id/add_to_list", to: "watchlist#add_to_list",  as: :add_to_list
+  get "watchlists/:id/add_to_list", to: "watchlist#add_to_list",  as: :add_to_list
+
 
 
   # root "posts#index"
