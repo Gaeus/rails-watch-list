@@ -39,3 +39,13 @@ Movie.destroy_all
   movie.save!
   puts "a new entry for the movie: #{movie.title} was added!"
 end
+
+
+List.destroy_all
+templates = ["action", "adventure", "comedy", "romance"]
+puts "Generating template lists..."
+templates.each do |template|
+  list = List.new(name: template)
+  list.save!
+  puts "a list was created for #{list.name} movies!"
+end

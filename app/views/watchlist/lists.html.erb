@@ -1,0 +1,11 @@
+<h1>lists</h1>
+<h4><%= link_to "Ajouter, modifier ou supprimer une liste", edit_path %></h4>
+<div class="lists-container">
+  <% @lists.each do |list| %>
+    <div class="list-item">
+      <p class="list-id"><%= list.id %></p>
+      <%= link_to list.name, list_path(list), class: "list-name-link" %>
+    </div>
+  <% end %>
+</div>
+<h5><%= link_to "Retour au menu principal", watchlists_path %></h5>

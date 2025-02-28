@@ -1,4 +1,11 @@
-<h2><%= @movie.title %></h2>
-<p><%= @movie.overview %></p>
-<img src="<%= @movie.poster_url %>" alt="<%= @movie.title %>">
-<h5><%= link_to "Retour au menu principal",  watchlists_path  %></h5>
+<h5><%= link_to "Retour au menu principal", watchlists_path %></h5>
+<h5><%= link_to "Retour à l'ensemble des films", all_path %></h5>
+<h5><%= link_to "Ajouter ce film à une liste", add_to_list_path %></h5>
+
+<div class="movie-details">
+  <img src="<%= @movie.poster_url %>" alt="<%= @movie.title %>" class="movie-details-poster">
+  <div class="movie-details-info">
+    <h2 class="movie-details-title"><%= @movie.title %></h2>
+    <p class="movie-details-overview"><%= @movie.overview %></p>
+  </div>
+</div>

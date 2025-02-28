@@ -2,8 +2,10 @@
 <h5><%= link_to "Retour au menu principal",  watchlists_path  %></h5>
 <div class="movie-grid">
   <% @movies.each do |movie| %>
-    <div class="movie-card">
-      <img src="<%= movie.poster_url %>" alt="<%= movie.title %>" class="movie-poster">
+    <div class="movie-card" >
+      <%= link_to movie_path(movie) do %>
+        <img src="<%= movie.poster_url %>" alt="<%= movie.title %>" class="movie-poster">
+      <% end %>
       <div class="movie-details">
         <h2 class="movie-title"><%= movie.title %></h2>
         <p class="movie-overview"><%= movie.overview %></p>

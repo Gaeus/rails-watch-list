@@ -4,12 +4,25 @@ class WatchlistController < ApplicationController
     @movies = Movie.all
   end
 
+  def lists
+    @lists = List.all
+  end
+
+  def list
+    @list = List.find(params[:id])
+  end
+
   def all
     @movies = Movie.all
   end
 
   def show
     @movie = Movie.find(params[:id])
+  end
+
+  def add_to_list
+    @movie = Movie.find(params[:id])
+    @lists = List.all
   end
 
   def new
@@ -26,13 +39,13 @@ class WatchlistController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def update
-    @movie = Movie.find(params[:id])
-    if @movie.update(movie_params)
-      redirect_to watchlists_path, notice: 'movie was successfully updated.'
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      redirect_to watchlists_path, notice: 'list was successfully updated.'
     else
       render :edit
     end
@@ -49,4 +62,9 @@ class WatchlistController < ApplicationController
   def movie_params
     params.require(:movie).permit(:name, :overview, :poster)
   end
+
+  def list_params
+    params.require(:list).permit(:name)
+  end
+
 end
